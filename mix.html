@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2画面 自動更新ビューアー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .left-frame {
+      width: 70%;
+      height: 100%;
+      border: none;
+    }
+    .right-frame {
+      width: 30%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <iframe class="left-frame" id="leftFrame" src="https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/skymap.cgi"></iframe>
+  <iframe class="right-frame" id="rightFrame" src="https://nkkx38387.github.io/old-ipad/2.html"></iframe>
+
+  <script>
+    var intervalMs = 60000; // 60秒
+
+    function reloadFrames() {
+      document.getElementById('leftFrame').src = document.getElementById('leftFrame').src;
+      document.getElementById('rightFrame').src = document.getElementById('rightFrame').src;
+    }
+
+    setInterval(reloadFrames, intervalMs);
+  </script>
+
+</body>
+</html>
