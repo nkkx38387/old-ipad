@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>曜日メッセージ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f5f5f5;
+    }
+    #message {
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="message">メッセージを読み込み中...</div>
+
+  <script>
+    // 曜日ごとのメッセージ設定（0 = 日曜, 1 = 月曜, ..., 6 = 土曜）
+    const messages = [
+      "日曜日です。ゆっくり休みましょう！",
+      "月曜日です。新しい週の始まりですね！",
+      "火曜日です。まだまだ頑張りましょう！",
+      "水曜日です。週の真ん中、あと少し！",
+      "木曜日です。週末が見えてきました！",
+      "金曜日です。もうひとふんばり！",
+      "土曜日です。楽しい週末を！"
+    ];
+
+    const today = new Date().getDay(); // 曜日を取得（0〜6）
+    document.getElementById("message").textContent = messages[today];
+  </script>
+
+</body>
+</html>
