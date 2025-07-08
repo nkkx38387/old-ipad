@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>東京の天気予報</title>
+</head>
+<body>
+  <h1>東京の天気予報</h1>
+  <div id="forecast"></div>
+
+  <script>
+    fetch('/weather')
+      .then(response => response.json())
+      .then(data => {
+        const tokyoForecast = data[0];
+        const timeSeries = tokyoForecast.timeSeries;
+        const weatherArray = timeSeries[0].areas[0].weathers;
+        const dateArray = timeSeries[0].timeDefines;
+
+        let html = '';
+        for (let i = 0; i < weatherArray.length; i++) {
+          html += `<p>${dateArray[i].slice(0, 10)}: ${weatherArray[i]}</p>`;
+        }
+
+        document.getElementById('forecast').innerHTML = html;
+      })
+      .catch(err => {
+        document.getElementById('forecast').textContent = '天気情報の取得に失敗しました';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
